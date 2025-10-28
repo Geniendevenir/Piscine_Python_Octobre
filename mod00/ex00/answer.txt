@@ -1,0 +1,5 @@
+1 - conda list
+2 - conda search numpy --info
+3 - conda remove numpy
+4 - conda install numpy
+5 - conda list --export > requirements.txt
