@@ -3,10 +3,10 @@ class Recipe:
 		if type(name) != str:
 			print("ERROR: Name should be a valid string")
 			return	
-		if not cooking_lvl.isdigit() or int(cooking_lvl) not in range(5):
+		if type(cooking_lvl) != int or cooking_lvl not in range(5):
 			print("ERROR: Cooking_lvl should be an int between 1 and 5")
 			return	
-		if not cooking_time.isdigit() or int(cooking_time) < 0:
+		if type(cooking_time) != int or cooking_time < 0:
 			print("ERROR: Cooking_time should be a valid positive int")
 			return	
 		if type(ingredients) != list:
@@ -25,8 +25,8 @@ class Recipe:
 			return	
 
 		self.name = name
-		self.cooking_lvl = int(cooking_lvl)
-		self.cooking_time = int(cooking_time)
+		self.cooking_lvl = cooking_lvl
+		self.cooking_time = cooking_time
 		self.ingredients = ingredients
 		self.recipe_type = recipe_type
 		self.description = description	
