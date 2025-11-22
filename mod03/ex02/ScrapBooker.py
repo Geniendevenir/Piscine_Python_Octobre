@@ -37,15 +37,4 @@ class ScrapBooker:
 			return None
 		elif len(dim) != 2 or dim[0] < 0 or dim[1] < 0:
 			return None
-		arr = np.concatenate([array] * dim[0], axis=0)
-		return np.concatenate([arr] * dim[1], axis=1)
-
-#[3, 2, 1]
-#[2, 3, 1]
-#[1, 2, 3]
-""" arr = np.array([[1, 2, 3], [2, 1, 3], [3, 2, 1]])
-print(arr)
-print(np.shape(arr))
-test = ScrapBooker()
-
-print(test.crop(arr, (1, 0), (0, 0))) """
+		return np.tile(array, dim)

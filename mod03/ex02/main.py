@@ -9,15 +9,16 @@ print(repr(spb.crop(arr1, (3,1),(1,0))))
 [10],
 [15]]) """
 
-arr2 = np.array("A B C D E F G H I".split() * 6).reshape(-1,9)
-print(repr(spb.thin(arr2,3,0)))
+
+arr2 = np.array("A B C D E F G H I".split() * 6).reshape(-1,9) #-1 = automatic reshape for that axis
+print(repr(spb.thin(arr2,3,1)))
 #Output :
-""" array([[’A’, ’B’, ’D’, ’E’, ’G’, ’H’, ’J’, ’K’],
-[’A’, ’B’, ’D’, ’E’, ’G’, ’H’, ’J’, ’K’],
-[’A’, ’B’, ’D’, ’E’, ’G’, ’H’, ’J’, ’K’],
-[’A’, ’B’, ’D’, ’E’, ’G’, ’H’, ’J’, ’K’],
-[’A’, ’B’, ’D’, ’E’, ’G’, ’H’, ’J’, ’K’],
-[’A’, ’B’, ’D’, ’E’, ’G’, ’H’, ’J’, ’K’]], dtype=’<U1’) """
+""" array([['A', 'B', 'D', 'E', 'G', 'H'],
+['A', 'B', 'D', 'E', 'G', 'H'],
+['A', 'B', 'D', 'E', 'G', 'H'],
+['A', 'B', 'D', 'E', 'G', 'H'],
+['A', 'B', 'D', 'E', 'G', 'H'],
+['A', 'B', 'D', 'E', 'G', 'H']], dtype='<U1') """
 
 arr3 = np.array([[1, 2, 3],[1, 2, 3],[1, 2, 3]])
 print(repr(spb.juxtapose(arr3, 3, 1)))
@@ -25,3 +26,7 @@ print(repr(spb.juxtapose(arr3, 3, 1)))
 """ array([[1, 2, 3, 1, 2, 3, 1, 2, 3],
 [1, 2, 3, 1, 2, 3, 1, 2, 3],
 [1, 2, 3, 1, 2, 3, 1, 2, 3]]) """
+
+print(repr(spb.mosaic(arr3, (3, 2))))
+#Output:
+#print(repr(np.tile(arr3, (3, 2))))
