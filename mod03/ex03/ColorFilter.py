@@ -58,14 +58,26 @@ class ColorFilter:
 	def to_grayscale(self, array, filter, **kwargs):
 		if not isinstance(array, np.ndarray):
 			return None
-		arr = array.copy()
+		arr = array.copy().astype(float)
 
 		if filter == "m" or filter == "mean":
-			arr.sum()
-			r = arr[..., 0]
-			g = arr[..., 1]
-			b = arr[..., 2]
-			print(r)	
+			# [[ [2, 4, 6], [3, 5, 6] ],
+			#  [ [6, 5, 4], [4, 2, 6] ],
+			#  [ [2, 6, 4], [4, 6, 2] ]]
+			# shape = (3, 2, 3)
+			#ar = np.array([[[2, 4, 6], [3, 5, 6]],[[6, 5, 4], [4, 2, 6]], [[2, 6, 4], [4, 6, 2]]])
+			#print(repr(ar))
+			#print(np.sum(ar, axis=0))
+			#print(np.sum(ar, axis=1))
+			#print(np.sum(ar, axis=2))
+
+			#s  = np.sum(arr, axis=2)
+			#s[..., :] = s[..., :] / 3
+			s  = np.sum(arr, axis=2) / 3
+			h, w = s.shape
+			tmp = s.reshape(h, w, 1)
+			out  = np.broadcast_to(tmp, (h, w, 3))
+			return out.astype(array.dtype)
 		elif filter == "w" or filter == "weight":
 			r_weight, g_weight, b_weight = kwargs
 			pass
